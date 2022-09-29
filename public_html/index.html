@@ -8,8 +8,63 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="first-div">
+            <div id ="form" style="display: none;" class="form-style">
+                <img id="img-boom"class="img-style" style="display: none;" src="https://static.dw.com/image/58157537_403.jpg">
+                <div class="alert" style="display:block;" id="count-div"><h1>Detenga la cuenta antes de los 4 segundos para evitar que se rompa el form</h1>
+                    <h3 id="count"></h4>
+                    
+                    <button type="button" class="button-style" style="margin-top: 200px!important;" onclick="closeForm()">Detener cuenta regresiva</button>
+                </div>
+            </div>
+          
+        </div>
+        <div class="container-buttons">
+            <button type="button" class="button-style" onclick="openForm()">Abrir Form</button>
+            <button type="button" class="button-style" onclick="closeForm()">Reiniciar Evento</button>
+        </div>
     </body>
 </html>
+
+<script>
+    function openForm(){
+        let optForm = document.getElementById("form");
+        let img = document.getElementById("img-boom");
+        let countdiv = document.getElementById("count-div");
+
+        if (optForm.style.display == "none") {
+            optForm.style.display="block";
+        }
+        
+        let count = document.getElementById("count");
+
+        let cuenta = 0;
+        for (let i = 0; i < 5; i++) {           
+            setTimeout( function timer(){
+                document.getElementById('count').innerHTML=i+1;
+                cuenta = cuenta + 1;
+                console.log(cuenta)
+                if (cuenta == 4) {
+                img.style.display="block";
+                countdiv.style.display="none";
+            }     
+            }, i*1000 );        
+                 
+        }     
+    }
+
+    function closeForm(){
+        let optForm=document.getElementById("form");
+        let img = document.getElementById("img-boom");
+        let countdiv = document.getElementById("count-div");
+
+        if (optForm.style.display == "block") {
+            optForm.style.display="none";
+            img.style.display="none";
+            countdiv.style.display="block";
+        }
+    }
+</script>
